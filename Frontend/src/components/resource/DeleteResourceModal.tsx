@@ -18,11 +18,24 @@ export default function DeleteResourceModal({ isOpen, onClose, onSuccess, resour
     setError('');
 
     try {
-      const response = await fetch(`${APIDomain}/resources/${resource._id}`, {
+      const response = await fetch(`${APIDomain}/resource/${resource._id}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
 
-      const data = await response.json();
+      // Log the raw response text for debugging
+      const responseText = await response.text();
+      console.log('Raw response:', responseText);
+
+      // Try to parse the response only if it's valid JSON
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (parseError) {
+        throw new Error(`Invalid JSON response: ${responseText}`);
+      }
       
       if (!response.ok) {
         throw new Error(data.error || 'Failed to delete resource');
@@ -32,6 +45,7 @@ export default function DeleteResourceModal({ isOpen, onClose, onSuccess, resour
       onClose();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
+      console.error('Delete error:', err);
     } finally {
       setLoading(false);
     }

@@ -1,54 +1,139 @@
-# React + TypeScript + Vite
+# CSK Resource Hub Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend application for the CSK Resource Hub project, built with React, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Available Scripts](#available-scripts)
+- [Development](#development)
+- [Building for Production](#building-for-production)
+- [Styling](#styling)
+- [Contributing](#contributing)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js (v18 or higher)
+- pnpm (recommended) or npm
+- Git
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd Resource_Hub/frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Install dependencies:
+```bash
+pnpm install
+# or
+npm install
 ```
+
+## Project Structure
+
+```
+frontend/
+├── src/
+│   ├── assets/         # Static assets (images, fonts, etc.)
+│   ├── components/     # Reusable React components
+│   ├── pages/          # Page components
+│   ├── utils/          # Utility functions and helpers
+│   ├── App.tsx         # Main application component
+│   ├── main.tsx        # Application entry point
+│   └── index.css       # Global styles
+├── public/             # Public assets
+├── index.html          # HTML template
+├── vite.config.ts      # Vite configuration
+├── tsconfig.json       # TypeScript configuration
+└── package.json        # Project dependencies
+```
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `pnpm dev` or `npm run dev`
+
+Runs the app in development mode.\
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
+
+### `pnpm build` or `npm run build`
+
+Builds the app for production to the `dist` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+### `pnpm preview` or `npm run preview`
+
+Previews the production build locally.
+
+### `pnpm lint` or `npm run lint`
+
+Runs ESLint to check for code quality issues.
+
+## Development
+
+The project uses:
+- React 19 with TypeScript
+- Vite as the build tool
+- Tailwind CSS for styling
+- DaisyUI for UI components
+- React Router for navigation
+- ESLint for code linting
+
+### Key Features
+
+- Modern React with TypeScript
+- Responsive design with Tailwind CSS
+- Component-based architecture
+- Client-side routing
+- Optimized production builds
+
+## Building for Production
+
+1. Build the application:
+```bash
+pnpm build
+# or
+npm run build
+```
+
+2. Preview the production build:
+```bash
+pnpm preview
+# or
+npm run preview
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+## Styling
+
+The project uses:
+- Tailwind CSS for utility-first styling
+- DaisyUI for pre-built components
+- Custom CSS for specific styling needs
+
+To add new styles:
+1. Use Tailwind classes directly in your components
+2. For custom styles, add them to the appropriate CSS file
+3. For component-specific styles, use CSS modules
+
+## Contributing
+
+1. Create a new branch for your feature
+2. Make your changes
+3. Run the linter to ensure code quality:
+```bash
+pnpm lint
+# or
+npm run lint
+```
+4. Submit a pull request
+
+## License
+
+This project is licensed under the ISC License.
